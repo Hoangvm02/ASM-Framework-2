@@ -11,7 +11,7 @@ import LogoImage from '../../assets/images/logo.png'
 const { Header, Content, Sider } = Layout;
 
 const item3: MenuProps['items'] = [
-  {key: "dassboard", icon: <HomeOutlined />, label: <Link to="/admin">Dashboard</Link>},
+    {key: "dassboard", icon: <HomeOutlined />, label: <Link to="/admin">Dashboard</Link>},
     {key: "cellphone", icon: <PhoneOutlined />, label: <Link to="/admin/products">Điện thoại</Link>},
     {key: "laptop", icon: <LaptopOutlined />, label: "Laptop"},
     {key: "tablet", icon: <TabletFilled />, label: "Máy tính bảng"},

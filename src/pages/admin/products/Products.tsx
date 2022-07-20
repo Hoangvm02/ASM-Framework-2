@@ -1,92 +1,135 @@
-import { Avatar, Button, List, Skeleton } from 'antd';
-import React, { useEffect, useState } from 'react';
-import Dassboard from '../../../componnent/Dassboard/Dassboard'
-const count = 3;
-const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
+import React, {useEffect, useState} from "react";
+import styled from "styled-components";
+import { Typography, Button, Table , Switch, Space, Image} from 'antd';
+import { Link } from 'react-router-dom'
+import { SearchOutlined, PlusOutlined, FormOutlined, DeleteOutlined } from '@ant-design/icons';
+const { Paragraph } = Typography
+import type { ColumnsType } from 'antd/es/table';
+import { getAll, remove } from "../../../api/products";
+import { ProductType } from "../../../types/product";
 
-const Products = () => {
-  // <Dassboard/>
-  const [initLoading, setInitLoading] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const [list, setList] = useState([]);
-  useEffect(() => {
-    fetch(fakeDataUrl)
-      .then((res) => res.json())
-      .then((res) => {
-        setInitLoading(false);
-        setData(res.results);
-        setList(res.results);
-      });
-  }, []);
+type ManagerProductProps = {
+    data: ProductType[],
+    onRemove: (id: number) => void
+  }
 
-  const onLoadMore = () => {
-    setLoading(true);
-    setList(
-      data.concat(
-        [...new Array(count)].map(() => ({
-          loading: true,
-          name: {},
-          picture: {},
-        })),
-      ),
-    );
-    fetch(fakeDataUrl)
-      .then((res) => res.json())
-      .then((res) => {
-        const newData = data.concat(res.results);
-        setData(newData);
-        setList(newData);
-        setLoading(false); // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-        // In real scene, you can using public method of react-virtualized:
-        // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
+const columns: ColumnsType<ProductType> = [
+    {
+        title: 'Ảnh',
+        dataIndex: 'image',
+        key: 'image',
+        render: (dataIndex) => (
+            <Image src={dataIndex} style={{width: '50px'}}/>
+          ),
+    },
+    {
+        title: 'Tên sản phẩm',
+        dataIndex: 'name',
+        key: 'name',
+        render: text => <a>{text}</a>,
+    },
+    {
+        title: 'Đặc điểm',
+        dataIndex: 'feature',
+        key: 'feature',
+        render: text => <a>{text}</a>,
+    },
+    {
+        title: 'Giá khuyến mãi',
+        dataIndex: 'saleOffPrice',
+        key: 'saleOffPrice',
+    },
+    {
+        title: 'Mô tả',
+        dataIndex: 'description',
+        key: 'description',
+    },
+    {
+        title: "Ẩn/Hiện",
+        key: "hidden",
+        render: (_, record) => (
+          <Space size="middle">
+            <Switch defaultChecked onChange={onChange} />
+          </Space>
+        ),
+      },
+      {
+        title: "Sửa",
+        key: "action",
+        render: (el, record) => {
+            return (
+                <Space size="middle">
+                  <IconsItems>
+                  <Link to ="/admin/product/edit/"><FormOutlined onClick={() => handleChangeRouter(el)}  /> </Link>
+                    
+                  </IconsItems>
+                </Space>
+            )
+        }
+      },
+      {
+        title: "Xóa",
+        key: "hidden",
+        render: (_, record) => (
+          <Space size="middle">
+             <IconsItems>
+                  {/* <Button> <DeleteOutlined onClick={() =>remove(Onremove())} /> </Button> */}
+                  </IconsItems>
+          </Space>
+        ),
+      },
 
-        window.dispatchEvent(new Event('resize'));
-      });
+];
+const handleChangeRouter = (el: any) => {
+    console.log('element: ', el);
+}
+const Onremove = (id:number) =>{
+    console.log('element: ', id);
+    
+}
+const onChange = (checked: boolean) => {
+    console.log(`switch to ${checked}`);
   };
+const ProductAdminPage = (props: ManagerProductProps) => {
+    const [dataTable, setDataTable] = useState([])
+    console.log('dataTable', dataTable);
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getAll()
+                setDataTable(data.data)
+            } catch (err) {
 
-  const loadMore =
-    !initLoading && !loading ? (
-      <div
-        style={{
-          textAlign: 'center',
-          marginTop: 12,
-          height: 32,
-          lineHeight: '32px',
-        }}
-      >
-        <Button onClick={onLoadMore}>loading more</Button>
-      </div>
-    ) : null;
-  return (
-    <div>
-    <h1>Điện Thoại</h1>
-
-    <List
-      className="demo-loadmore-list"
-      loading={initLoading}
-      itemLayout="horizontal"
-      loadMore={loadMore}
-      dataSource={list}
-      renderItem={(item) => (
+            }
+        }
         
-        <List.Item
-          actions={[<a key="list-loadmore-edit">edit</a>, <a key="list-loadmore-more">more</a>]}
-        >
-          <Skeleton avatar title={false} loading={item.loading} active>
-            <List.Item.Meta
-              avatar={<Avatar src={item.picture.large} />}
-              title={<a href="https://ant.design">{item.name?.last}</a>}
-              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-            />
-            <div>content</div>
-          </Skeleton>
-        </List.Item>
-      )}
-    />
-    </div>
+        fetchData()
+  
+    }, [])
 
-  );
-};
+    return (
+        <>
+            <Breadcrumb>
+                <Typography.Title level={2} style={{ margin: 0 }}>
+                    Điện thoại
+                </Typography.Title>
+                <Link to="/admin/product/add">
+                    <Button type="dashed" shape="circle" icon={<PlusOutlined />} />
+                </Link>
+            </Breadcrumb>
+            <Table columns={columns} dataSource={dataTable} />
+        </>
+    )
+}
 
-export default Products;
+const Breadcrumb = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+`
+const IconsItems = styled.div`
+    color:#00B0D7;
+`
+
+export default ProductAdminPage
