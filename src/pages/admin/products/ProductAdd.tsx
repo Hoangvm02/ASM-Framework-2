@@ -67,7 +67,7 @@ const ProductAdd: React.FC = () => {
     console.log("Failed:", errorInfo);
   };
   console.log(uploadedImage);
-  if()
+  
   return (
     <>
       <Form
@@ -143,7 +143,7 @@ const ProductAdd: React.FC = () => {
                   name="saleOffPrice"
                   label="Giá giảm"
                   labelCol={{ span: 24 }}
-                  rules={[{ required: true, message: "Gía sản phẩm" , }]}
+                  rules={[{ required: true, message: "Gía sản phẩm" }]}
                 >
                   <InputNumber style={{ width: "100%" }} size="large" />
                 </Form.Item>
