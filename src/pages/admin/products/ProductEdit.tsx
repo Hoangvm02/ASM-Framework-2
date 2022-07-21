@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import {
   Typography,
@@ -11,9 +11,10 @@ import {
   InputNumber,
   Select,
   message,
+  Image
 } from "antd";
-import { useNavigate } from "react-router-dom";
-import { createProduct, update } from "../../../api/products";
+import { useNavigate, useParams } from "react-router-dom";
+import { createProduct, read, update } from "../../../api/products";
 import UploadImage from "../imaoge/image";
 import { upload } from "../../../api/image";
 import { PlusCircleOutlined } from "@ant-design/icons";
@@ -22,17 +23,27 @@ const { TextArea } = Input;
 const { Option } = Select;
 
 const ProductEdit: React.FC = () => {
+  const [form] = Form.useForm();
   const navigate = useNavigate();
   const [base64Image, setBase64Image] = React.useState("");
   const [uploadedImage, setUploadedImage] = React.useState("");
-
+  const {id} = useParams()
+  useEffect(() => {
+    const getProduct = async () => {
+      const { data } = await read(id);
+      form.setFieldsValue(data);
+      console.log(data);
+    };
+    getProduct();
+ 
+  }, []);
   const handleChangeImage = (event: any) => {
     const file = event.target.files[0];
     // previewFile(file)
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      uploadImage(reader.result);
+      uploadImage(reader.result as string);
     };
   };
 
@@ -65,6 +76,7 @@ const ProductEdit: React.FC = () => {
     <>
       <Form
         // name="product"
+        form={form}
         initialValues={{}}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
@@ -73,11 +85,15 @@ const ProductEdit: React.FC = () => {
       >
         <Breadcrumb>
           <Typography.Title level={2} style={{ margin: 0 }}>
-            Thêm mới
+            Chỉnh sửa
           </Typography.Title>
         </Breadcrumb>
         <Row gutter={16}>
           <Col span={10}>
+          <Form.Item valuePropName="src" name="image"
+            >
+              <Image />
+            </Form.Item>
             <Container>
               <UploadWrapper>
                 {uploadedImage ? (
@@ -95,8 +111,14 @@ const ProductEdit: React.FC = () => {
                   </UploadIcon>
                 )}
               </UploadWrapper>
-              <Label2>Mô tả ngắn</Label2>
-              <TextArea rows={4} placeholder="Mô tả ngắn" />
+              <Form.Item
+                name="shortDesc"
+                labelCol={{ span: 24 }}
+                label="Mô tả ngắn"
+                rules={[{ required: true, message: "Mô tả ngắn" }]}
+              >
+                <TextArea name="shortDesc" />
+              </Form.Item>
             </Container>
           </Col>
           <Col span={14}>

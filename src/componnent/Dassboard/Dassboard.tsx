@@ -29,9 +29,11 @@ const DashboardLayout: React.FC = () => (
         Dashboard
       </NameD>
         <div className={s.content_btn}>
-            <Seach to={<SeachB />} className={s.input}  >
+         
+            <Seach className={s.input}  >
             </Seach>
             <SearchOutlined className={s.ic_seach}  />
+            {/* <SeachB  /> */}
         </div>
         <NameE>
           Hello Minh Hoang
