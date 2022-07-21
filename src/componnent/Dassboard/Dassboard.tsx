@@ -7,6 +7,7 @@ import {Link, Outlet} from 'react-router-dom'
 import styled from 'styled-components';
 
 import LogoImage from '../../assets/images/logo.png'
+import SeachB from "./SeachI";
 
 const { Header, Content, Sider } = Layout;
 
@@ -28,8 +29,9 @@ const DashboardLayout: React.FC = () => (
         Dashboard
       </NameD>
         <div className={s.content_btn}>
-            <Seach className={s.input} />
-            <SearchOutlined className={s.ic_seach} />
+            <Seach to={<SeachB />} className={s.input}  >
+            </Seach>
+            <SearchOutlined className={s.ic_seach}  />
         </div>
         <NameE>
           Hello Minh Hoang

@@ -13,7 +13,7 @@ import {
   message,
 } from "antd";
 import { useNavigate } from "react-router-dom";
-import { createProduct } from "../../../api/products";
+import { createProduct, update } from "../../../api/products";
 import UploadImage from "../imaoge/image";
 import { upload } from "../../../api/image";
 import { PlusCircleOutlined } from "@ant-design/icons";
@@ -50,7 +50,7 @@ const ProductEdit: React.FC = () => {
     console.log("Success:", values);
 
     try {
-      const data = await createProduct(values);
+      const data = await update(values);
       message.success("Tạo mới thành công");
       navigate(-1);
     } catch (err) {
@@ -118,7 +118,7 @@ const ProductEdit: React.FC = () => {
                   name="originalPrice"
                   label="Giá gốc"
                   labelCol={{ span: 24 }}
-                  rules={[{ required: true, message: "Gía sản phẩm" }]}
+                  rules={[{ required: true, message: "Gía sản phẩm không được trống" }]}
                 >
                   <InputNumber style={{ width: "100%" }} size="large" />
                 </Form.Item>
@@ -128,7 +128,7 @@ const ProductEdit: React.FC = () => {
                   name="saleOffPrice"
                   label="Giá giảm"
                   labelCol={{ span: 24 }}
-                  rules={[{ required: true, message: "Gía sản phẩm" }]}
+                  rules={[{ required: true, message: "Gía sản phẩm không được trống" }]}
                 >
                   <InputNumber style={{ width: "100%" }} size="large" />
                 </Form.Item>
@@ -152,7 +152,7 @@ const ProductEdit: React.FC = () => {
               name="feature"
               labelCol={{ span: 24 }}
               label="Đặc điểm nổi bật"
-              rules={[{ required: true, message: "Đặc điểm sản phẩm" }]}
+              rules={[{ required: true, message: "Đặc điểm sản phẩm không được bỏ trống" }]}
             >
               <TextArea name="feature" />
             </Form.Item>
@@ -160,7 +160,7 @@ const ProductEdit: React.FC = () => {
               name="description"
               labelCol={{ span: 24 }}
               label="Mô tả sản phẩm"
-              rules={[{ required: true, message: "Mô tả sản phẩm" }]}
+              rules={[{ required: true, message: "Mô tả sản phẩm không được bỏ trống" }]}
             >
               <TextArea name="description" />
             </Form.Item>

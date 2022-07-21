@@ -47,25 +47,27 @@ const columns: ColumnsType<ProductType> = [
     {
         title: "Ẩn/Hiện",
         key: "hidden",
-        render: (_, record) => (
+        render: (el, record) => (
           <Space size="middle">
-            <Switch defaultChecked onChange={onChange} />
+            <Switch unCheckedChildren onClick={onChange}  />
           </Space>
         ),
       },
       {
         title: "Sửa",
         key: "action",
-        render: (el, record) => {
+        render: (el, record, id) => {
             return (
                 <Space size="middle">
                   <IconsItems>
-                  <Link to ="/admin/product/edit/"><FormOutlined onClick={() => handleChangeRouter(el)}  /> </Link>
-                    
+                  <Link to ="/admin/product/edit/${{data.id}}"><FormOutlined /> </Link>
                   </IconsItems>
                 </Space>
             )
+            console.log(id);
         }
+      
+        
       },
       {
         title: "Xóa",
@@ -73,7 +75,7 @@ const columns: ColumnsType<ProductType> = [
         render: (_, record) => (
           <Space size="middle">
              <IconsItems>
-                  {/* <Button> <DeleteOutlined onClick={() =>remove(Onremove())} /> </Button> */}
+                   <DeleteOutlined/> 
                   </IconsItems>
           </Space>
         ),
@@ -90,6 +92,8 @@ const Onremove = (id:number) =>{
 const onChange = (checked: boolean) => {
     console.log(`switch to ${checked}`);
   };
+
+
 const ProductAdminPage = (props: ManagerProductProps) => {
     const [dataTable, setDataTable] = useState([])
     console.log('dataTable', dataTable);

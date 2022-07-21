@@ -21,7 +21,7 @@ function App() {
       </Route>
       <Route path="/admin" element={<DashboardLayout />}>
         {/* <Route index element={<AdminLayout/>} /> */}
-        <Route path="products" element={<ProductAdminPage />} />
+        <Route path="products" element={< ProductAdminPage />} />
         <Route path="product/add" element={< ProductAdd/>} />
         <Route path="product/edit/:id" element={< ProductEdit/>} />
       </Route>
