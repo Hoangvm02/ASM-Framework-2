@@ -1,28 +1,31 @@
-import { Select } from 'antd';
-import React, { useState } from 'react';
 
-const OPTIONS = ['Iphone', 'Oppo', 'Samsung', 'Xaomi'];
+import React from 'react';
+import { UserOutlined, SearchOutlined } from '@ant-design/icons';
+import { AutoComplete as AutuCompleteAnt, Input } from 'antd';
+import styled from 'styled-components';
 
-const SeachB: React.FC = () => {
-  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+const options = [
+    { value: "Iphone" },
+    { value: "Oppo" },
+    { value: "Samsung" },
+    { value: "Xiaomi" },
+];
 
-  const filteredOptions = OPTIONS.filter(o => !selectedItems.includes(o));
-
-  return (
-    <Select
-      mode="multiple"
-      placeholder="Inserted are removed"
-      value={selectedItems}
-      onChange={setSelectedItems}
-      style={{ width: '100%' }}
+const AutoComplete: React.FC = () => (
+    <AutuCompleteAnt
+        dropdownClassName="certain-category-search-dropdown"
+        dropdownMatchSelectWidth={500}
+        options={options}
+        style={{width: 500}}
     >
-      {filteredOptions.map(item => (
-        <Select.Option key={item} value={item}>
-          {item}
-        </Select.Option>
-      ))}
-    </Select>
-  );
-};
+        <WrapperInput size="large" placeholder="Tìm Kiếm"  />
+    </AutuCompleteAnt>
+);
 
-export default SeachB;
+const WrapperInput = styled(Input)`
+    border: none;
+    border-radius: 10px;
+    width: 500px;
+`
+
+export default AutoComplete;

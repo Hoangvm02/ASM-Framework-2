@@ -20,7 +20,7 @@ import { PlusCircleOutlined } from "@ant-design/icons";
 
 const { TextArea } = Input;
 const { Option } = Select;
-const ProductEdit: React.FC = () => {
+const ProductDetail: React.FC = () => {
 
   const [form] = Form.useForm();
   const navigate = useNavigate();
@@ -55,49 +55,19 @@ const ProductEdit: React.FC = () => {
       console.log(err);
     }
   };
-  const onFinish = async (values: any) => {
-    const product = {
-      id: id,
-      name: values.name,
-      originalPrice: values.originalPrice,
-      saleOffPrice: values.saleOffPrice,
-      feature: values.feature,
-      description: values.description,
-      shortDesc: values.shortDesc,
-      image: values.image,
-    }
-    if(values.img){
-      product.image = uploadedImage
-    }
-    // console.log("Success:", values);
-    try {
-      const  data  = await update(product);
-      message.success("Sửa thành công");
-      navigate(-1);
-      
-    } catch (err) {
-      message.error("Có lỗi xảy ra");
-    }
-    
-  };
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-  };
+ 
   return (
     <>
       <Form
         // name="product"
         form={form}
         initialValues={{}}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
         autoComplete="on"
         labelCol={{ span: 24 }}
       >
         <Breadcrumb>
           <Typography.Title level={2} style={{ margin: 0 }}>
-            Chỉnh sửa
+            Chi tiết sản phẩm
           </Typography.Title>
         </Breadcrumb>
         <Row gutter={16}>
@@ -106,24 +76,6 @@ const ProductEdit: React.FC = () => {
               <Image />
             </Form.Item>
             <Container>
-              <Form.Item name="img">
-              <UploadWrapper>
-                {uploadedImage ? (
-                  <ImagePreview style={{}} src={uploadedImage} alt="Image" />
-                ) : (
-                  <UploadIcon>
-                    <PlusCircleOutlined style={{ fontSize: 30 }} />
-                    <input
-                      style={{ display: "none" }}
-                      type="file"
-                      accept="image/png, image/jpg, image/jpeg, image/gif"
-                      name="image"
-                      onChange={handleChangeImage}
-                    />
-                  </UploadIcon>
-                )}
-              </UploadWrapper>
-              </Form.Item>
               <Form.Item
                 name="shortDesc"
                 labelCol={{ span: 24 }}
@@ -220,11 +172,6 @@ const ProductEdit: React.FC = () => {
               <TextArea name="description" />
             </Form.Item>
 
-            <Form.Item>
-              <Button type="primary" htmlType="submit">
-                Tạo mới sản phẩm
-              </Button>
-            </Form.Item>
           </Col>
         </Row>
       </Form>
@@ -267,4 +214,4 @@ const UploadIcon = styled.label`
 const ImagePreview = styled.img`
   width: 100%;
 `;
-export default ProductEdit;
+export default ProductDetail;

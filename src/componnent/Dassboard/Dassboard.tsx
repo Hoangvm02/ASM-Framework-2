@@ -1,5 +1,5 @@
 import s from "./dassboard.module.css"
-import { PhoneOutlined, LaptopOutlined, TabletFilled, AudioOutlined, SettingOutlined, SearchOutlined, HomeOutlined  } from '@ant-design/icons';
+import { PhoneOutlined, LaptopOutlined, TabletFilled, AudioOutlined, SettingOutlined, SearchOutlined, HomeOutlined, CopyOutlined  } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import React from 'react';
@@ -8,12 +8,14 @@ import styled from 'styled-components';
 
 import LogoImage from '../../assets/images/logo.png'
 import SeachB from "./SeachI";
+import AutoComplete from "./SeachI";
 
 const { Header, Content, Sider } = Layout;
 
 const item3: MenuProps['items'] = [
     {key: "dassboard", icon: <HomeOutlined />, label: <Link to="/admin">Dashboard</Link>},
-    {key: "cellphone", icon: <PhoneOutlined />, label: <Link to="/admin/products">Điện thoại</Link>},
+    {key: "cellphone", icon: <PhoneOutlined />, label: <Link to="/admin/product">Điện thoại</Link>},
+    {key: "categories", icon: <CopyOutlined />, label: <Link to="/admin/category">Danh Mục</Link>},
     {key: "laptop", icon: <LaptopOutlined />, label: "Laptop"},
     {key: "tablet", icon: <TabletFilled />, label: "Máy tính bảng"},
     {key: "audio", icon: <AudioOutlined />, label: "Âm thanh"},
@@ -30,10 +32,10 @@ const DashboardLayout: React.FC = () => (
       </NameD>
         <div className={s.content_btn}>
          
-            <Seach className={s.input}  >
-            </Seach>
+            {/* <Seach className={s.input}  > */}
+            < AutoComplete/>
             <SearchOutlined className={s.ic_seach}  />
-            {/* <SeachB  /> */}
+           
         </div>
         <NameE>
           Hello Minh Hoang
