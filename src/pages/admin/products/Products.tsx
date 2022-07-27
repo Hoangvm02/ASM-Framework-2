@@ -21,7 +21,6 @@ type ManagerProductProps = {
   onRemove: (id: number) => void;
 };
 
-
 const handleChangeRouter = (el: any) => {
   console.log("element: ", el);
 };
@@ -31,20 +30,22 @@ const onChange = (checked: boolean) => {
 };
 
 const ProductAdminPage = () => {
-  const [cate, setCate] = useState<CategoryType[]>([])
+  const [cate, setCate] = useState<CategoryType[]>([]);
   useEffect(() => {
     const getCate = async () => {
-      const {data} = await list();
+      const { data } = await list();
       setCate(data);
-  }
-  getCate()
-  }, [])
+    };
+    getCate();
+  }, []);
   const columns: ColumnsType<ProductType> = [
     {
       title: "Ảnh",
       dataIndex: "image",
       key: "image",
-      render: (dataIndex) => <Image src={dataIndex} style={{ width: "50px" }} />,
+      render: (dataIndex) => (
+        <Image src={dataIndex} style={{ width: "50px" }} />
+      ),
     },
     {
       title: "Tên sản phẩm",
@@ -63,15 +64,24 @@ const ProductAdminPage = () => {
       dataIndex: "saleOffPrice",
       key: "saleOffPrice",
     },
-    {
-      title: "Mô tả ngắn",
-      dataIndex: "shortDesc",
-      key: "shortDesc", 
-    },
+    // {
+    //   title: "Mô tả ngắn",
+    //   dataIndex: "shortDesc",
+    //   key: "shortDesc",
+    // },
     {
       title: "Danh mục",
       dataIndex: "categories",
       key: "categories",
+      render: (text: any) => {
+        let name;
+        cate.map((item) => {
+          if(item.id == text){
+            name = item.name;
+          }
+        })
+        return <span>{name}</span>
+      }
     },
     {
       title: "Ẩn/Hiện",
@@ -91,7 +101,7 @@ const ProductAdminPage = () => {
           <Space size="middle">
             <IconsItems>
               <Link to={`/admin/product/detail/${dataIndex}`}>
-              <PlusCircleOutlined />
+                <PlusCircleOutlined  />
               </Link>
             </IconsItems>
           </Space>
@@ -118,23 +128,20 @@ const ProductAdminPage = () => {
       title: "Xóa",
       key: "hidden",
       dataIndex: "id",
-      render: (text:number) => (
+      render: (text: number) => (
         <Space size="middle">
-          <Button onClick={ async () =>{
-            const confirm = window.confirm("bạn có chắc muốn xóa")
-            if(confirm){
-              const {data} = await remove(text);
-              data &&
-              setDataTable(dataTable.filter((item)=>
-               item.id !== text
-              ))
-              
-              console.log(text);
-            }
-           
-        
-            
-          }}>
+          <Button
+            onClick={async () => {
+              const confirm = window.confirm("bạn có chắc muốn xóa");
+              if (confirm) {
+                const { data } = await remove(text);
+                data &&
+                  setDataTable(dataTable.filter((item) => item.id !== text));
+
+                console.log(text);
+              }
+            }}
+          >
             <IconsItems2>
               <DeleteOutlined />
             </IconsItems2>
@@ -162,7 +169,7 @@ const ProductAdminPage = () => {
         <Typography.Title level={2} style={{ margin: 0 }}>
           Điện thoại
         </Typography.Title>
-        
+
         <Link to="/admin/product/add">
           <Button type="dashed" shape="circle" icon={<PlusOutlined />} />
         </Link>
@@ -181,7 +188,7 @@ const Breadcrumb = styled.div`
 const IconsItems = styled.div`
   color: #00b0d7;
 `;
-const IconsItems2 = styled.button`
+const IconsItems2 = styled.div`
   color: #00b0d7;
 `;
 

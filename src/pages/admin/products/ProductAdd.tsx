@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Typography,
@@ -17,6 +17,9 @@ import { createProduct } from "../../../api/products";
 import UploadImage from "../imaoge/image";
 import { upload } from "../../../api/image";
 import { PlusCircleOutlined } from "@ant-design/icons";
+import { CategoryType } from "../../../types/categories";
+import { list } from "../../../api/categories";
+import { useForm } from "react-hook-form";
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -25,6 +28,16 @@ const ProductAdd: React.FC = () => {
   const navigate = useNavigate();
   const [base64Image, setBase64Image] = React.useState("");
   const [uploadedImage, setUploadedImage] = React.useState("");
+  
+  const [cate, setCate] = useState<CategoryType[]>([]);
+  useEffect(() => {
+    const getCate = async () => {
+      const { data } = await list();
+      setCate(data);
+    };
+    getCate();
+  }, []);
+  console.log(cate);
 
   const handleChangeImage = (event: any) => {
     const file = event.target.files[0];
@@ -47,10 +60,10 @@ const ProductAdd: React.FC = () => {
     }
   };
   const onFinish = async (values: any) => {
-    if(values.image == undefined) {
-      values.image = ""
-    }else{
-      values.image = uploadedImage
+    if (values.image == undefined) {
+      values.image = "";
+    } else {
+      values.image = uploadedImage;
     }
     console.log("Success:", values);
 
@@ -67,7 +80,7 @@ const ProductAdd: React.FC = () => {
     console.log("Failed:", errorInfo);
   };
   console.log(uploadedImage);
-  
+
   return (
     <>
       <Form
@@ -154,10 +167,15 @@ const ProductAdd: React.FC = () => {
                   name="categories"
                   rules={[{ required: true }]}
                 >
-                  <Select style={{ width: "100%" }} size="large">
-                    <Option value="phone">Điện thoại</Option>
-                    <Option value="laptop">Laptop</Option>
-                    <Option value="tablet">Máy tính bảng</Option>
+                  <Select
+                    style={{ width: "100%" }}
+                    size="large"
+                  >
+                    <option>Chon danh mục</option>
+                    {cate &&
+                      cate.map((item) => {
+                        return <option value={item.id}>{item.name}</option>;
+                      })}
                   </Select>
                 </Form.Item>
               </Col>
@@ -177,7 +195,7 @@ const ProductAdd: React.FC = () => {
               label="Mô tả sản phẩm"
               rules={[{ required: true, message: "Mô tả sản phẩm" }]}
             >
-              <TextArea name="description"  />
+              <TextArea name="description" />
             </Form.Item>
 
             <Form.Item>
@@ -225,6 +243,7 @@ const UploadIcon = styled.label`
 `;
 
 const ImagePreview = styled.img`
-  width: 100%;
+  width: 250px;
+  height: 50%;
 `;
 export default ProductAdd;

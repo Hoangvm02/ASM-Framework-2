@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Typography,
@@ -17,6 +17,8 @@ import { parsePath, useNavigate, useParams } from "react-router-dom";
 import { read, update } from "../../../api/products";
 import { upload } from "../../../api/image";
 import { PlusCircleOutlined } from "@ant-design/icons";
+import { CategoryType } from "../../../types/categories";
+import { list } from "../../../api/categories";
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -34,6 +36,14 @@ const ProductDetail: React.FC = () => {
       // console.log(data);
     };
     getProduct();
+  }, []);
+  const [cate, setCate] = useState<CategoryType[]>([]);
+  useEffect(() => {
+    const getCate = async () => {
+      const { data } = await list();
+      setCate(data);
+    };
+    getCate();
   }, []);
   const handleChangeImage = (event: any) => {
     const file = event.target.files[0];
@@ -62,6 +72,7 @@ const ProductDetail: React.FC = () => {
         // name="product"
         form={form}
         initialValues={{}}
+        disabled
         autoComplete="on"
         labelCol={{ span: 24 }}
       >
@@ -69,20 +80,22 @@ const ProductDetail: React.FC = () => {
           <Typography.Title level={2} style={{ margin: 0 }}>
             Chi tiết sản phẩm
           </Typography.Title>
-        </Breadcrumb>
-        <Row gutter={16}>
+        </Breadcrumb >
+        <Row gutter={16} >
           <Col span={10}>
             <Form.Item valuePropName="src" name="image">
               <Image />
             </Form.Item>
             <Container>
               <Form.Item
+              
                 name="shortDesc"
                 labelCol={{ span: 24 }}
                 label="Mô tả ngắn"
                 rules={[{ required: true, message: "Mô tả ngắn" }]}
               >
                 <TextArea name="shortDesc" />
+                {/* <span></span> */}
               </Form.Item>
             </Container>
           </Col>
@@ -136,10 +149,15 @@ const ProductDetail: React.FC = () => {
                   name="categories"
                   rules={[{ required: true }]}
                 >
-                  <Select style={{ width: "100%" }} size="large">
-                    <Option value="phone">Điện thoại</Option>
-                    <Option value="laptop">Laptop</Option>
-                    <Option value="tablet">Máy tính bảng</Option>
+                  <Select
+                    style={{ width: "100%" }}
+                    size="large"
+                  >
+                    <option>Chon danh mục</option>
+                    {cate &&
+                      cate.map((item) => {
+                        return <option value={item.id}>{item.name}</option>;
+                      })}
                   </Select>
                 </Form.Item>
               </Col>

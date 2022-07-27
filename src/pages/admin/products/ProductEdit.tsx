@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Typography,
@@ -17,6 +17,8 @@ import { parsePath, useNavigate, useParams } from "react-router-dom";
 import { read, update } from "../../../api/products";
 import { upload } from "../../../api/image";
 import { PlusCircleOutlined } from "@ant-design/icons";
+import { list } from "../../../api/categories";
+import { CategoryType } from "../../../types/categories";
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -26,6 +28,17 @@ const ProductEdit: React.FC = () => {
   const navigate = useNavigate();
   const [base64Image, setBase64Image] = React.useState("");
   const [uploadedImage, setUploadedImage] = React.useState("");
+  // categories
+  const [cate, setCate] = useState<CategoryType[]>([]);
+  useEffect(() => {
+    const getCate = async () => {
+      const { data } = await list();
+      setCate(data);
+    };
+    getCate();
+  }, []);
+  // console.log(cate);
+  // Products
   const { id } = useParams();
   useEffect(() => {
     const getProduct = async () => {
@@ -65,6 +78,7 @@ const ProductEdit: React.FC = () => {
       description: values.description,
       shortDesc: values.shortDesc,
       image: values.image,
+      categories: values.categories
     }
     if(values.img){
       product.image = uploadedImage
@@ -184,10 +198,15 @@ const ProductEdit: React.FC = () => {
                   name="categories"
                   rules={[{ required: true }]}
                 >
-                  <Select style={{ width: "100%" }} size="large">
-                    <Option value="phone">Điện thoại</Option>
-                    <Option value="laptop">Laptop</Option>
-                    <Option value="tablet">Máy tính bảng</Option>
+                  <Select
+                    style={{ width: "100%" }}
+                    size="large"
+                  >
+                    <option>Chon danh mục</option>
+                    {cate &&
+                      cate.map((item) => {
+                        return <option value={item.id}>{item.name}</option>;
+                      })}
                   </Select>
                 </Form.Item>
               </Col>
