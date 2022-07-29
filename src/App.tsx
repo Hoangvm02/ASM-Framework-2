@@ -13,15 +13,17 @@ import CategoryAdminPage from "./pages/admin/categories";
 import CategoryAdd from "./pages/admin/categories/CategoryAdd";
 import CategoryEdit from "./pages/admin/categories/CategoryEdit";
 import ProductDetail from "./pages/admin/products/DetailProducts";
+import Home from "./pages/users/Home";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <Routes>
-      <Route>
         <Route path="/signin" element={<Signin />} />
-        <Route index element={<HomeLayout />} />
+      <Route element={<HomeLayout/>}>
+      
+        <Route index element={<Home />} />
       </Route>
       <Route path="/admin" element={<DashboardLayout />}>
         {/* <Route index element={<AdminLayout/>} /> */}

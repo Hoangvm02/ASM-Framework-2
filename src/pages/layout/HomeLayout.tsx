@@ -1,5 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import Banner from '../../componnent/banner/Banner'
 import Footer from '../../componnent/footer/Footer'
 import Header from '../../componnent/header/Header'
 
@@ -8,7 +9,10 @@ type Props = {}
 const HomeLayout = (props: Props) => {
   return (
     <div>
-        <Header/>
+       <div>
+       <Header/>
+        <Banner/>
+       </div>
         <Outlet/>
         <Footer/>
     </div>
