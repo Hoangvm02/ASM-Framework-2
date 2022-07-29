@@ -6,7 +6,7 @@ import Header from '../../componnent/header/Header'
 
 type Props = {}
 
-const HomeLayout = (props: Props) => {
+const HomeLayout = () => {
   return (
     <div>
        <div>

@@ -23,7 +23,7 @@ import Google from "../../assets/images/Rectangle (1).png";
 const { TextArea } = Input;
 const { Option } = Select;
 
-const Login: React.FC = () => {
+const Signup: React.FC = () => {
   const navigate = useNavigate();
 
   const onFinish = async (values: any) => {};
@@ -43,7 +43,7 @@ const Login: React.FC = () => {
           layout="vertical"
         >
           <Typography.Title level={2} style={{ margin: 0 }}>
-            Đăng nhập
+            ĐĂNG KÝ
           </Typography.Title>
           <Row>
             <Col>
@@ -55,6 +55,19 @@ const Login: React.FC = () => {
               >
                 <Input size="large" style={{ width: "400px" }} />
               </Form.Item>
+
+
+              <Form.Item
+                name="Số điện thoại"
+                labelCol={{ span: 24 }}
+                label="Số điện thoại"
+                rules={[
+                  { required: true, message: "Số điện thoại không được trống" },
+                ]}
+              >
+                <InputNumber size="large"  size="large" style={{ width: "400px" }}/>
+              </Form.Item>
+
               <Form.Item
                 name="password"
                 labelCol={{ span: 24 }}
@@ -65,8 +78,15 @@ const Login: React.FC = () => {
               >
                 <Input size="large" />
               </Form.Item>
+                {/*  */}
+
+              
               <Form.Item>
-                <Button type="primary" htmlType="submit" style={{ width: "400px" }} >
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  style={{ width: "400px" }}
+                >
                   Đăng ký
                 </Button>
               </Form.Item>
@@ -146,4 +166,4 @@ const ImagePreview = styled.img`
   width: 250px;
   height: 50%;
 `;
-export default Login;
+export default Signup;

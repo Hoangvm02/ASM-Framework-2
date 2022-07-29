@@ -14,15 +14,16 @@ import CategoryAdd from "./pages/admin/categories/CategoryAdd";
 import CategoryEdit from "./pages/admin/categories/CategoryEdit";
 import ProductDetail from "./pages/admin/products/DetailProducts";
 import Home from "./pages/users/Home";
+import Signup from "./pages/Auth/signup";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <Routes>
-        <Route path="/signin" element={<Signin />} />
-      <Route element={<HomeLayout/>}>
-      
+      <Route path="/signin" element={<Signin />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route element={<HomeLayout />}>
         <Route index element={<Home />} />
       </Route>
       <Route path="/admin" element={<DashboardLayout />}>
