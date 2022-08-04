@@ -70,7 +70,7 @@ const ProductAdd: React.FC = () => {
     try {
       const data = await createProduct(values);
       message.success("Tạo mới thành công");
-      navigate(-1);
+      // navigate(-1);
     } catch (err) {
       message.error("Có lỗi xảy ra");
     }

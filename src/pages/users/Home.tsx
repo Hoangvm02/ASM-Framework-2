@@ -8,7 +8,7 @@ type Props = {
 
 const Home = (props: Props) => {
   return (
-    <ProductLayout data ={props.data} />
+    <ProductLayout data={props.data} />
   )
 }
 

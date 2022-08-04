@@ -34,19 +34,19 @@ const Footer = (props: Props) => {
           </div>
         </div>
         <div>
-          <SpanFontsize>Gọi mua hàng: 1800.2044(8h00 - 22h00)</SpanFontsize>{" "}
+          <SpanFontsize>Gọi mua hàng: 1800.2044(8h00 - 22h00)</SpanFontsize>
           <br />
           <SpanFontsize>
             Gọi khiếu nại: 1800.2044(8h00 - 21h00)
-          </SpanFontsize>{" "}
+          </SpanFontsize>
           <br />
           <SpanFontsize>
             Gọi bảo hành: 1800.2044(8h00 - 21h00)
-          </SpanFontsize>{" "}
+          </SpanFontsize>
           <br />
           <SpanFontsize1>Đối tác dịch vụ bảo hành</SpanFontsize1> <br />
           <SpanFontsize>Điện Thoại - Máy tính</SpanFontsize> <br />
-          <SpanFontsize1>Trung tâm bảo hành uỷ quyền Apple</SpanFontsize1>{" "}
+          <SpanFontsize1>Trung tâm bảo hành uỷ quyền Apple</SpanFontsize1>
           <br />
           <Bank src={Bank6} /> <br />
         </div>
