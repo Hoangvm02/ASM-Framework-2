@@ -11,7 +11,8 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <ContainerrT>
+   <div>
+     <ContainerrT>
       <Footer1>
         <div>
           <SpanFontsize1>Tìm cửa hàng</SpanFontsize1> <br />
@@ -72,6 +73,8 @@ const Footer = (props: Props) => {
           <br />
         </div>
       </Footer1>
+    </ContainerrT>
+
       <Wrapper>
         <Container>
           <Coll>
@@ -122,7 +125,7 @@ const Footer = (props: Props) => {
           </SpanDoc>
         </Container>
       </Wrapper>
-    </ContainerrT>
+   </div>
   );
 };
 
@@ -150,6 +153,7 @@ const Footer1 = styled.div`
   justify-content: space-between;
   max-width: 1200px;
   margin: auto;
+  margin-top: 50px;
 `;
 const Image1 = styled.div`
   display: flex;
@@ -160,7 +164,7 @@ const Bank = styled.img`
   padding-right: 5px;
 `;
 const Wrapper = styled.div`
-  background-color: #f8f8f8;
+  background-color: #F2F2F2;
 `;
 const Container = styled.div`
   width: 1200px;

@@ -67,7 +67,10 @@ const CategoryAdminPage = () => {
       dataIndex: "id",
       render: (text:number) => (
         <Space size="middle">
+          
           <Button onClick={ async () =>{
+            const confirm = window.confirm("Bạn có chắc muốn xóa ?");
+           if(confirm){
             const {data} = await remove(text);
             data &&
             setDataTable(dataTable.filter((item)=>
@@ -76,7 +79,9 @@ const CategoryAdminPage = () => {
             
             console.log(text);
             
-          }}>
+          }}
+           }
+           >
             <IconsItems2>
               <DeleteOutlined />
             </IconsItems2>

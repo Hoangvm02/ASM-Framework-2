@@ -20,13 +20,21 @@ import Footer from "../../componnent/footer/Footer";
 import Banner from "../../componnent/banner/Banner";
 import FaceboookT from "../../assets/images/Rectangle.png";
 import Google from "../../assets/images/Rectangle (1).png";
+import { signup } from "../../api/auth";
 const { TextArea } = Input;
 const { Option } = Select;
 
 const Signup: React.FC = () => {
   const navigate = useNavigate();
-
-  const onFinish = async (values: any) => {};
+  const onFinish = async (values: any) => {
+    try {
+      const { data: user } = await signup(values);
+      message.success("Đăng ký thành công");
+      navigate("/signin");
+    } catch (err) {
+      message.error("Có lỗi xảy ra");
+    }
+  };
 
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
@@ -48,14 +56,13 @@ const Signup: React.FC = () => {
           <Row>
             <Col>
               <Form.Item
-                name="name"
+                name="email"
                 labelCol={{ span: 24 }}
                 label="Email"
                 rules={[{ required: true, message: "Email không được trống" }]}
               >
                 <Input size="large" style={{ width: "400px" }} />
               </Form.Item>
-
 
               <Form.Item
                 name="Số điện thoại"
@@ -65,7 +72,7 @@ const Signup: React.FC = () => {
                   { required: true, message: "Số điện thoại không được trống" },
                 ]}
               >
-                <InputNumber size="large"  size="large" style={{ width: "400px" }}/>
+                <InputNumber size="large" style={{ width: "400px" }} />
               </Form.Item>
 
               <Form.Item
@@ -76,11 +83,14 @@ const Signup: React.FC = () => {
                   { required: true, message: "Mật khẩu không được trống" },
                 ]}
               >
-                <Input size="large" />
+                {/* <Input size="large" /> */}
+                <Input.Password size="large" />
               </Form.Item>
-                {/*  */}
+              {/*  */}
+              <Form.Item>
+                <a href="/signin">Bạn đã có tài khoản</a>
+              </Form.Item>
 
-              
               <Form.Item>
                 <Button
                   type="primary"

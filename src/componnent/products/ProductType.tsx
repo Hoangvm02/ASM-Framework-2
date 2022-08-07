@@ -2,6 +2,9 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import { getAll } from "../../api/products";
 import { ProductType } from "../../types/product";
+import img1 from "../../assets/images/Vector.png";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 type Props = {
   data: ProductType[];
@@ -25,13 +28,16 @@ const ProductTypes = (props: Props) => {
               <div className="w-full px-4 lg:px-0">
                 <div className="p-2 h-96 bg-white rounded shadow-md">
                   <div className="">
+                  <Link to={`/products/${item.id}`}>
                     <div className="relative  mb-3 h-62 lg:mb-0">
                       <img
                         src={item.image}
                         alt="Just a flower"
                         className="object-fill w-60 h-max rounded"
                       />
+                     
                     </div>
+                    </Link>
                     <div className="flex-auto p-2 justify-evenly">
                       <div className="flex flex-wrap ">
                         <div className="flex items-center justify-between w-full min-w-0 ">
@@ -49,11 +55,22 @@ const ProductTypes = (props: Props) => {
                         </div>
                       </div>
                       <div className="text-black text-xs p-1 bg-slate-300">
-                        <p>[HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá lên tới 1.000.000đ và</p>
+                        <p>
+                          [HOT] Thu cũ lên đời giá cao - Thủ tục nhanh - Trợ giá
+                          lên tới 1.000.000đ và
+                        </p>
                       </div>
-                      <div>
-
-                      </div>
+                      {/* đánh giá */}
+                      <Items>
+                        <Col>
+                          <Img src={img1} />
+                          <Img src={img1} />
+                          <Img src={img1} />
+                          <Img src={img1} />
+                          <Img src={img1} />
+                        </Col>
+                        <Col2>99+ đánh giá</Col2>
+                      </Items>
                     </div>
                   </div>
                 </div>
@@ -64,4 +81,19 @@ const ProductTypes = (props: Props) => {
     </div>
   );
 };
+const Items = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+`;
+const Col = styled.div`
+  display: flex;
+`;
+const Img = styled.img`
+  width: 12px;
+  height: 12px;
+`;
+const Col2 = styled.div`
+  font-size: 12px;
+`
 export default ProductTypes;

@@ -9,9 +9,14 @@ import img4 from "../../assets/images/nghe.png";
 import img5 from "../../assets/images/dongho.png";
 import img6 from "../../assets/images/home.png";
 import Banner2 from "../../assets/images/banner.png";
+import { Select } from "antd";
 
 type Props = {};
+const { Option, OptGroup } = Select;
 
+const handleChange = (value: string) => {
+  console.log(`selected ${value}`);
+};
 const Banner = (props: Props) => {
   return (
     <Container>
@@ -131,7 +136,6 @@ const Image3 = styled.img`
   margin-bottom: 5px;
 `;
 const Images = styled.img`
-  /* position: absolute; */
   width: 900px;
   height: 300px;
   margin-left: 20px;

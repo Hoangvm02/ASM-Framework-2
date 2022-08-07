@@ -5,6 +5,10 @@ export const list = () => {
     const url = "/categories"
     return instance.get(url)
 }
+export const listCate = (id:number) => {
+    const url = `/categories/${id}`
+    return instance.get(url)
+}
 export const remove = (id: number) => {
     const url = `/categories/${id}`;
     return instance.delete(url);
@@ -17,7 +21,7 @@ export const update = (categories: CategoryType) => {
     const url = `/categories/${categories.id}`;
     return instance.put(url, categories);
 }
-export const read = (id:number | undefined) => {
+export const read = (id:number) => {
     const url = `/categories/${id}`;
     return instance.get(url);
 }

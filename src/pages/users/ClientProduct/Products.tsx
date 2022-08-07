@@ -1,36 +1,47 @@
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { listCate } from "../../../api/categories";
+import { read } from "../../../api/products";
 import Image1 from "../../../assets/images/imageTest.png";
+import { ProductType } from "../../../types/product";
 import s from "../../users/ClientProduct/product.module.css";
 
 type Props = {};
 
 const Products = (props: Props) => {
+  const [product, setProduct] = useState<any>([]);
+  const { id } = useParams();
+  const [data, setData] = useState<ProductType[]>([]);
+  useEffect(() => {
+    const getProduct = async () => {
+      const { data } = await read(id);
+      setProduct(data);
+    };
+    getProduct();
+  }, [id]);
   return (
     <Container>
       <div>
         {/* tên */}
-        <div>Samsung Galaxy A73 (5G) 256GB</div>
+        <div>{product.name}</div>
       </div>
       <Items1>
         {/* Product img  */}
         <div>
           <div>
-            <Img1 src={Image1} />
+            <Img1 src={product.image} />
           </div>
         </div>
         {/* price  */}
         <div>
           <Pricee>
-            <PriceColor>11.690.000 ₫</PriceColor>
-            <PriceC>12.990.000 ₫</PriceC>
+            <PriceColor>{product.originalPrice} đ</PriceColor>
+            <PriceC>{product.saleOffPrice} đ</PriceC>
           </Pricee>
           <div>
-            Mô tả ngắn: Trước khi mua bất kỳ chiếc điện thoại nào, người dùng
-            cũng sẽ quan tâm đến thiết kế sản phẩm trước. Với phiên bản A73,
-            Samsung đã tạo nên một chiếc smartphone với vẻ ngoài mang đến cảm
-            giác sang trọng và tinh tế.
+           {product.description}
           </div>
           <Items2>
             <div>
@@ -46,6 +57,28 @@ const Products = (props: Props) => {
           </Items2>
         </div>
       </Items1>
+      {/* Sản phẩm cùng loại */}
+      <div>
+        <div>Sản phẩm cùng loại</div>
+
+        <Coll>
+          <div>
+          
+            <img src="" alt="" />
+            <h3>name</h3>
+            <div>
+              <span>giá</span>
+              <span>giá</span>
+            </div>
+          </div>
+          <div>sp2</div>
+          <div>sp3</div>
+          <div>sp4</div>
+          <div>sp5</div>
+        </Coll>
+ 
+      </div>
+      
 
       {/* đặc điểm nổi bật */}
       <div>
@@ -53,60 +86,25 @@ const Products = (props: Props) => {
           <NameDD>Đặc điểm nổi bật</NameDD>
           <div>
             <SpanN>
-              Camera chất lượng, bắt trọn từng khoảng khắc - Cụm 4 camera với
-              cảm biến chính lên đến 108 MP
+             {product.feature}
             </SpanN>{" "}
             <br />
             <SpanN>
-              Thưởng thức không gian giải trí cực đỉnh - Màn hình lớn 6.7 inch,
-              độ phân giải Full HD+, 120Hz mượt mà
+             {product.shortDesc}
             </SpanN>{" "}
             <br />
             <SpanN>
-              Cấu hình Galaxy A73 5G được nâng cấp mạnh với chip Snapdragon
-              778G, RAM lên đến 8 GB
-            </SpanN>{" "}
-            <br />
-            <SpanN>
-              Chiến game thoải mái không lo gián đoạn - Viên pin lớn 5000 mAh,
-              hỗ trợ sạc nhanh 25 W
+            {product.description}
             </SpanN>{" "}
             <br />
           </div>
         </Items3>
       </div>
-      {/* docs */}
-      <div>
-        Năm 2022 hứa hẹn sẽ là một năm rất đáng trông đợi đối với những ai là
-        fan của thương hiệu điện thoại Samsung. Mới đây, hãng sẽ tiếp tục cho ra
-        mắt nhiều smartphone với sự cải tiến trong thiết kế và cấu hình, trong
-        đó phải kể đến chiếc Samsung Galaxy A73 với nhiều cải tiến so với thế hệ
-        trước. Vậy sản phẩm có gì nổi bật, giá bao nhiêu và liệu có nên mua
-        không? Tìm hiểu ngay nhé!
+
+      <div className={s.butoonT}>
+        <InButton>Xem Thêm</InButton>
       </div>
-      <div className={s.items2}>
-        <span>
-          Đánh giá Samsung A73 - Hiệu năng mượt mà, chụp ảnh chuyên nghiệp
-        </span>
-        <div>
-          Điện thoại cao cấp nhất dòng Galaxy A series sở hữu nhiều nâng cấp
-          đáng giá so với thế hệ trước, từ ngoại hình cho đến hiệu năng, đặc
-          biệt là hệ thống camera. Sau đây là những đánh giá chi tiết về chiếc
-        </div>
-      </div>
-      <div className={s.items3}>
-        <span>Thiết kế sang trọng, màn hình Super AMOLED</span>
-        <p>
-          Trước khi mua bất kỳ chiếc điện thoại nào, người dùng cũng sẽ quan tâm
-          đến thiết kế sản phẩm trước. Với phiên bản A73, Samsung đã tạo nên một
-          chiếc smartphone với vẻ ngoài mang đến cảm giác sang trọng và tinh tế.
-          Samsung Galaxy A73 được thiết kế gọn nhẹ với tiêu chí đáp ứng khả năng
-          mang theo để tiện đi lại cho người dùng. Giờ đây, bạn có thể mang theo
-          chiếc smartphone bên cạnh đến bất cứ đâu, bất cứ lúc nào.Kích thước và
-          trọng lượng của chiếc điện thoại rất vừa phải và dĩ nhiên sẽ không
-          chiếm quá nhiều diện tích trong túi xách và có thể di chuyển dễ dàng.
-        </p>
-      </div>
+      
     </Container>
   );
 };
@@ -147,6 +145,10 @@ const Items2 = styled.div`
   display: flex;
   margin-top: 200px;
 `;
+const Coll = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
 const CartItems = styled.div`
   display: flex;
 `;
@@ -167,10 +169,15 @@ const NameDD = styled.div`
   color: red;
   font-size: 18px;
 `;
-const SpanN = styled.span`
+const SpanN = styled.p`
   padding-left: 20px;
   font-size: 14px;
-  padding-bottom: 10px;
-  padding-top: 10px;
+ 
+`;
+const InButton = styled.button`
+  border: 1px solid #000000;
+  padding: 2px 60px;
+  box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.1);
+  border-radius: 10px;
 `;
 export default Products;

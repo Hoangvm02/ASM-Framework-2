@@ -21,6 +21,7 @@ const item3: MenuProps['items'] = [
     {key: "audio", icon: <AudioOutlined />, label: "Âm thanh"},
     
 ]
+// const a = JSON.parse(localStorage.getItem("user") as string);
 
 const DashboardLayout: React.FC = () => (
   <Container>
@@ -38,7 +39,7 @@ const DashboardLayout: React.FC = () => (
            
         </div>
         <NameE>
-          Hello Minh Hoang
+        {/* {a.user.email} */}
         </NameE>
     </HeaderCustom>
     <Layout>

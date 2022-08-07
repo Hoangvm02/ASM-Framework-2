@@ -20,18 +20,26 @@ import Footer from "../../componnent/footer/Footer";
 import Banner from "../../componnent/banner/Banner";
 import FaceboookT from "../../assets/images/Rectangle.png";
 import Google from "../../assets/images/Rectangle (1).png";
+import { signin } from "../../api/auth";
+import { auth } from "../../utils/Stogare";
 const { TextArea } = Input;
 const { Option } = Select;
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
-
-  const onFinish = async (values: any) => {};
+  const onFinish = async (values: any) => {
+    try {
+      const {data: user} = await signin(values);
+      message.success("Đăng nhập thành công");
+      auth(user, () => navigate('/'))
+    } catch (err) {
+      message.error("Có lỗi xảy ra");
+    }
+  };
 
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
-
   return (
     <div>
       <Header />
@@ -48,7 +56,7 @@ const Login: React.FC = () => {
           <Row>
             <Col>
               <Form.Item
-                name="name"
+                name="email"
                 labelCol={{ span: 24 }}
                 label="Email"
                 rules={[{ required: true, message: "Email không được trống" }]}
@@ -63,11 +71,11 @@ const Login: React.FC = () => {
                   { required: true, message: "Mật khẩu không được trống" },
                 ]}
               >
-                <Input size="large" />
+                <Input.Password  size="large"/>
               </Form.Item>
               <Form.Item>
                 <Button type="primary" htmlType="submit" style={{ width: "400px" }} >
-                  Đăng ký
+                  Đăng Nhập
                 </Button>
               </Form.Item>
               <ContainerT>
