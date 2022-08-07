@@ -17,6 +17,7 @@ import Home from "./pages/users/Home";
 import Signup from "./pages/Auth/signup";
 import Products from "./pages/users/ClientProduct/Products";
 import Cart from "./pages/users/cart/Cart";
+import Private from "./utils/Private";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -25,12 +26,14 @@ function App() {
     <Routes>
       <Route path="/signin" element={<Signin />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="cart" element={<Cart />} />
       <Route element={<HomeLayout />}>
         <Route index element={<Home />} />   
         <Route path="products/:id" element={<Products />} />
-        <Route path="cart" element={<Cart />} />
+       
       </Route>
-      <Route path="/admin" element={<DashboardLayout />}>
+      
+      <Route path="/admin" element={<Private><DashboardLayout/></Private> }>
         {/* <Route index element={<AdminLayout/>} /> */}
         <Route>
           <Route path="product" element={<ProductAdminPage />} />

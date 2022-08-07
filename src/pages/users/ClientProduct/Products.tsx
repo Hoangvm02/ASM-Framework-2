@@ -1,5 +1,7 @@
 import { ShoppingCartOutlined } from "@ant-design/icons";
+import { message } from "antd";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { listCate } from "../../../api/categories";
@@ -21,6 +23,14 @@ const Products = (props: Props) => {
     };
     getProduct();
   }, [id]);
+  const dispatch = useDispatch();
+  const addToCart = (item: any) => {
+    dispatch({
+      type: "cart/add",
+      payload: { ...item, amount: 1 },
+    });
+    message.success("Thêm vào giỏ hàng thành công!");
+  };
   return (
     <Container>
       <div>
@@ -52,7 +62,7 @@ const Products = (props: Props) => {
               <div>
                 <ShoppingCartOutlined style={{ width: "50px" }} />
               </div>
-              <div>Thêm vào giỏ hàng</div>
+              <button onClick={() => addToCart(product)}>Thêm vào giỏ hàng</button>
             </CartItems>
           </Items2>
         </div>

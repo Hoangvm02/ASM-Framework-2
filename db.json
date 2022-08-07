@@ -126,6 +126,7 @@
       "email": "admin@gmail.com",
       "password": "$2a$10$YAPNdP0/gWNiMOlCGm0hQukxz0rGa/qF8xBYH/2oQVwl/fhDzh2Q.",
       "Số điện thoại": 372482834,
+      "role": 1,
       "id": 1
     }
   ]
