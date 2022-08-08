@@ -49,8 +49,8 @@ const Cart = () => {
 
                 <div>
                   <Pricee>
-                    <PriceColor>{item.originalPrice} đ</PriceColor>
-                    <PriceC>{item.saleOffPrice} đ</PriceC>
+                    <PriceColor>{item.originalPrice.toLocaleString()} đ</PriceColor>
+                    <PriceC>{item.saleOffPrice.toLocaleString()} đ</PriceC>
                   </Pricee>
                 </div>
                 <div>
@@ -65,7 +65,7 @@ const Cart = () => {
       <div>
         <Total>
           <h2>TỔNG TIỀN TẠM TÍNH: </h2>
-          <span>Tổng giá</span>
+          <span>{cart.total.toLocaleString()}</span>
         </Total>
         <Oder>
           TIẾN HÀNH ĐẶT HÀNG

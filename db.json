@@ -7,6 +7,14 @@
     {
       "name": "Samsung",
       "id": 3
+    },
+    {
+      "name": "Xiaomi",
+      "id": 4
+    },
+    {
+      "name": "Nokia",
+      "id": 5
     }
   ],
   "products": [
@@ -119,6 +127,72 @@
       "shortDesc": "Mua iPhone 13 chính hãng VN/A giá rẻ tại Hoàng Hà Mobile\n\nVới những cải tiến không ngừng nghỉ cho những sản phẩm điện thoại thông minh của mình, Apple là hãng smartphone luôn nhận được sự tin tưởng từ người tiêu dùng Việt Nam. Dòng sản phẩm iPhone 13 được ra mắt gần đây với màu sắc mới và nâng cấp đáng kể về phần cứng của điện thoại đang nhận được rất nhiều sự quan tâm từ người hâm mộ.",
       "image": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1659584735/anhhtus/krzyrghuqnauncnnrui3.png",
       "categories": 2
+    },
+    {
+      "image": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1659918429/anhhtus/hpjuksucxdakzncqxukn.jpg",
+      "shortDesc": "Đúng như các thông tin được đồn đoán trước đó, mẫu flagship mới của gả khổng lồ Hàn Quốc được ra mắt với tên gọi là Samsung Galaxy S22 Ultra với nhiều cải tiến đáng giá. Mẫu điện thoại cao cấp đến từ Samsung này có nhiều thay đổi từ thiết kế, cấu hình cho đến camera. Vậy siêu phẩm này có gì mới, giá bao nhiêu và có nên mua không? Hãy cùng tìm hiểu chi tiết ngay bên dưới nhé!",
+      "name": "Samsung Galaxy S22 Ultra (8GB - 128GB)",
+      "originalPrice": 24590000,
+      "saleOffPrice": 30990000,
+      "categories": 3,
+      "feature": "Vi xử lý mạnh mẽ nhất Galaxy - Snapdragon 8 Gen 1 (4 nm)\nCamera mắt thần bóng đêm Nightography - Chụp đêm cực đỉnh\nS Pen đầu tiên trên Galaxy S - Độ trễ thấp, dễ thao tác\nDung lượng pin bất chấp ngày đêm - Viên pin 5000mAh, sạc nhanh 45W",
+      "description": "Samsung S22 Ultra được nâng cấp gì so với S21 Ultra\nTrước khi chính thức ra mắt cộng đồng những chiếc điện thoại Samsung S22 Series đã có thời gian được thai nghén khá dài để đảm bảo có những tính năng thực sự vượt trội so với phiên bản tiền nhiệm. Để có thể hình dung rõ ràng ta xét đến 2 mẫu Samsung S22 Ultra và S21 Ulta xem dòng flagship mới nhà Samsung có những nâng cấp nổi trội nào nhé!",
+      "id": 11
+    },
+    {
+      "id": 12,
+      "name": "Samsung Galaxy Z Fold3 5G",
+      "originalPrice": 27590000,
+      "saleOffPrice": 41990000,
+      "feature": "Thiết kế độc đáo tiện lợi, khẳng định đẳng cấp - Thiết kế gập mở, chất liệu cao cấp, bản lề chắc chắn\nMàn hình kép ấn tượng - Màn hình chính 7.9\" và màn hình phụ: 6.23\", 120Hz chuyển động mượt mà\nHệ thống camera siêu ấn tượng - Bộ 3 ống kính camera 12MP, camera selfie ẩn dưới màn hình\nHiệu năng ấn tượng, làm chủ tốc độ - Snapdragon 888 kết hợp RAM 12GB, hỗ trợ 5G",
+      "description": "Đánh giá Samsung Fold 3 chi tiết - Khẳng định đẳng cấp\nVới sự thành công đáng kinh ngạc và luôn cháy hàng từ lúc ra mắt đến thời điểm hiện tại của hai thế hệ trước là Fold 1 và Z Fold 2. Phiên bản Samsung Galaxy Z Fold3 lần này được ra mắt với độ hoàn thiện cao về thiết kế và hiệu năng. Mang đến cho người dùng một trải nghiệm cực kỳ thú vị hơn.\n\nThiết kế độc đáo tiện lợi, chất liệu cao cấp\nLà sản phẩm mang đến độ hoàn thiện cao hơn nhiều so với hai phiên bản trước, điện thoại màn hình gập mới được thiết kế kích thước hài hòa hơn. Giúp bạn có thể dễ dàng cầm khi đóng hoặc mở màn hình đều dễ sử dụng nhất. Bộ khớp nối bản lề mới giúp kết nối bộ khung của Samsung Fold 3 hoàn hảo hơn. Tăng cao độ bền khi đóng mở liên tục và cố định cực kỳ chắc chắn.",
+      "shortDesc": "Với sự thành công đáng kinh ngạc và luôn cháy hàng từ lúc ra mắt đến thời điểm hiện tại của hai thế hệ trước là Fold 1 và Z Fold 2. Phiên bản Samsung Galaxy Z Fold3 lần này được ra mắt với độ hoàn thiện cao về thiết kế và hiệu năng. Mang đến cho người dùng một trải nghiệm cực kỳ thú vị hơn.",
+      "image": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1659918766/anhhtus/lxjdhlfoaedvpfadkau6.jpg",
+      "categories": 3
+    },
+    {
+      "id": 13,
+      "name": "Samsung Galaxy A73 (5G) 256GB",
+      "originalPrice": 11590000,
+      "saleOffPrice": 12990000,
+      "feature": "Camera chất lượng, bắt trọn từng khoảng khắc - Cụm 4 camera với cảm biến chính lên đến 108 MP\nThưởng thức không gian giải trí cực đỉnh - Màn hình lớn 6.7 inch, độ phân giải Full HD+, 120Hz mượt mà\nCấu hình Galaxy A73 5G được nâng cấp mạnh với chip Snapdragon 778G, RAM lên đến 8 GB\nChiến game thoải mái không lo gián đoạn - Viên pin lớn 5000 mAh, hỗ trợ sạc nhanh 25 W",
+      "description": "Điện thoại Samsung A73 (5G) giá bao nhiêu?\nĐược định vị ở phân khúc cận cao cấp, do đó điện thoại Galaxy A73 sẽ có giá bán niêm yết là 11.99 và 12.99 triệu đồng lần lượt cho phiên bản 128GB và 256GB. Trong đó, phiên bản 256GB hiện đang được bán độc quyền tại hệ thống bán lẻ CellphoneS với mức giá cực kỳ ưu đãi.\n\nVới tầm giá trên 10 triệu, sản phẩm Samsung A73 sẽ cạnh tranh trực tiếp với các đối thủ nặng ký đến từ các thương hiệu đình đám khác như OPPO Reno7, Xiaomi 11T Pro hay iPhone 11 của Apple...",
+      "shortDesc": "Năm 2022 hứa hẹn sẽ là một năm rất đáng trông đợi đối với những ai là fan của thương hiệu điện thoại Samsung. Mới đây, hãng sẽ tiếp tục cho ra mắt nhiều smartphone với sự cải tiến trong thiết kế và cấu hình, trong đó phải kể đến chiếc Samsung Galaxy A73 với nhiều cải tiến so với thế hệ trước. Vậy sản phẩm có gì nổi bật, giá bao nhiêu và liệu có nên mua không? Tìm hiểu ngay nhé!",
+      "image": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1659918780/anhhtus/pvpbqoto02locmbkyyx7.jpg",
+      "categories": 3
+    },
+    {
+      "image": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1659918911/anhhtus/xwhh28ydnebi4pukxiti.jpg",
+      "shortDesc": "Đánh giá Xiaomi Mi 11T Pro – Hiệu năng mạnh, dung lượng pin lớn\nNếu bạn là người ưa thích săn lùng những chiếc điện thoại mới nhất với sức mạnh đi đầu thời đại, đừng bỏ qua Xiaomi 11T Pro vừa được Xiaomi trình làng. Không chỉ sở hữu nguồn sức mạnh vô biên từ con chip mạnh mẽ nhất, máy còn được trang bị nhiều tính năng mới mang tính đột phá phân khúc. ",
+      "name": "Xiaomi 11T Pro",
+      "originalPrice": 13090000,
+      "saleOffPrice": 14990000,
+      "categories": 4,
+      "feature": "Màn hình giải trí cực đỉnh - Màn hình AMOLED 6.67 inch Full HD+, 120Hz\nCấu hình vượt trội, cân mọi tựa game - Chip Snapdragon 888 5G, GPU Adreno 660 mạnh mẽ\nTrải nghiệm điện ảnh đỉnh cao - Cụm camera sau lên đến 108 MP siêu nét, quay phim 8K\nPin cực lớn, sạc cực nhanh - Viên pin lớn 5000 mAh, sạc nhanh 120W",
+      "description": "Đánh giá Xiaomi Mi 11T Pro – Hiệu năng mạnh, dung lượng pin lớn\nNếu bạn là người ưa thích săn lùng những chiếc điện thoại mới nhất với sức mạnh đi đầu thời đại, đừng bỏ qua Xiaomi 11T Pro vừa được Xiaomi trình làng. Không chỉ sở hữu nguồn sức mạnh vô biên từ con chip mạnh mẽ nhất, máy còn được trang bị nhiều tính năng mới mang tính đột phá phân khúc. \n\nMàn hình lớn, hình ảnh siêu sống động\nXiaomi Mi 11T phiên bản Pro được trang bị màn hình với lớp kính Gorilla Glass Victus mặt trước. Kích thước màn hình mở rộng tạo không gian xem phim tuyệt hảo với những thước phim sắc nét ấn tượng.",
+      "id": 14
+    },
+    {
+      "image": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1659918911/anhhtus/xwhh28ydnebi4pukxiti.jpg",
+      "shortDesc": "Điện thoại Xiaomi Redmi 10C - Hiệu năng \"khủng\" trong tầm giá phải chăng\nXiaomi vừa cho ra mắt thêm một lựa chọn smartphone tuyệt vời trong phân khúc phổ thông: điện thoại Xiaomi Redmi 10C với màn hình lớn, hiệu năng \"khủng\" kèm thời lượng pin dài sẽ giúp người dùng công nghệ có được chiếc smartphone thích hợp cho năm 2022.",
+      "name": "Xiaomi Redmi 10C 4GB 128GB",
+      "originalPrice": 3900000,
+      "saleOffPrice": 4500000,
+      "categories": 4,
+      "feature": "Hiệu năng ổn định trên từng tác vụ, đa nhiệm mượt mà - Vi xử lí Snapdragon 680, RAM 4 GB\nCamera độ phân giải cao, hỗ trợ nhiều chế độ chụp - Cảm biến chính 50 MP, độ phân giải cao\nMàn hình giải trí sắc nét ấn tượng - Kích thước 6.71\", tấm nền IPS LCD độ phân giải HD+\nThoả sức giải trí, năng lượng bất tận - Sỡ hữu viên pin lớn 5000mAh cùng sạc nhanh 18W",
+      "description": "Điện thoại Xiaomi Redmi 10C - Hiệu năng \"khủng\" trong tầm giá phải chăng\nXiaomi vừa cho ra mắt thêm một lựa chọn smartphone tuyệt vời trong phân khúc phổ thông: điện thoại Xiaomi Redmi 10C với màn hình lớn, hiệu năng \"khủng\" kèm thời lượng pin dài sẽ giúp người dùng công nghệ có được chiếc smartphone thích hợp cho năm 2022.\n\nGọn nhẹ, năng động và có màn hình lớn\nĐược thiết kế cho phân khúc phổ thông, Xiaomi Redmi 10C mang ngoại hình trẻ trung và năng động, sẵn sàng đáp ứng mọi thao tác sử dụng thường ngày của bạn. Xiaomi Redmi 10C có thiết kế linh hoạt với trọng lượng nhẹ và độ mỏng tốt để bạn luôn cầm máy thoải mái trên tay. Mặt lưng Xiaomi Redmi 10C được chế tạo với họa tiết đường vân đặc biệt giúp thiết bị ngăn bám vân tay hiệu quả, lưu giữ vẻ đẹp và màu sắc của máy.",
+      "id": 15
+    },
+    {
+      "image": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1659918911/anhhtus/xwhh28ydnebi4pukxiti.jpg",
+      "shortDesc": "Nằm trong phân khúc smartphone giá rẻ, điện thoại Xiaomi Redmi 10A vừa ra mắt mới đây được đánh giá cao bởi nhiều tính năng hữu ích cùng hiệu năng ổn định. Với người dùng sử dụng các tác vụ cơ bản như lướt web, nghe gọi, xem phim,… thì chiếc Xiaomi Redmi này là một trong những sự lựa chọn tối ưu. Tìm hiểu ngay thêm thông tin hữu ích dưới đây để đưa ra quyết định nên sở hữu smartphone đến từ nhà Xiaomi không nhé!",
+      "name": "Xiaomi Redmi 10A",
+      "originalPrice": 2500000,
+      "saleOffPrice": 3500000,
+      "categories": 4,
+      "feature": "Nổi bật với thiết kế đơn giản mà tinh tế, mang đến diện mạo mới mẻ, thu hút hơn\nKhông gian giải trí cực đỉnh - Màn hình giọt nước kích thước 6.53 inches, IPS LCD, HD+\nHiệu năng được tối ưu mạnh mẽ - MediaTek Helio G25, RAM 2 GB\nPin trâu, dùng lâu cả ngày dài - 5000mAh, Sạc nhanh 10W",
+      "description": "Đánh giá điện thoại Xiaomi Redmi 10A - Smartphone giá rẻ, chất lượng\nTiếp tục là một sản phẩm mới nằm trong bộ sưu tập Xiaomi Redmi A-series mang tên Xiaomi Redmi 10A. Vậy mẫu điện thoại Xiaomi Redmi 10A, mẫu điện thoại rẻ nhất từ Xiaomi này có gì đặc biệt, hãy cùng tìm hiểu ngay sau đây.\n\nThiết kế\nSản phẩm mới có thiết kế gần giống với Redmi 9C và 10C. Khung viền được bo tròn mềm mại tạo nét nhẹ nhàng. Nhờ vậy dù máy có kích thước lớn nhưng khi cầm trong thời gian dài không gây cảm giác khó chịu. Xiaomi Redmi 10A sở hữu một thiết kế gọn nhẹ cùng mặt lưng nhựa với đường cân chéo, dễ dàng chiếm được cảm tình của người dùng. Đặc biệt là thiết kế đơn sắc có ba phiên bản màu: xanh nước biển, xám than chì và màu bạc. Với các màu sắc này, người dùng có thể lựa chọn phù hợp với tính cách, sở thích của bản thân.",
+      "id": 16
     }
   ],
   "users": [
@@ -128,6 +202,19 @@
       "Số điện thoại": 372482834,
       "role": 1,
       "id": 1
+    },
+    {
+      "email": "khach@gmail.com",
+      "password": "$2a$10$f9WsobBESRpTMRwgjIe/2.Q.4Fu0MLioZ08sZz.p.WmYXnPFmPc9S",
+      "Số điện thoại": 91238123,
+      "id": 2,
+      "role": 0
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "$2a$10$T8vxolmECG0vdjpCmmmUaub8wiTBV2iqAtxMBR4U/C6zE6mDDk3xe",
+      "Số điện thoại": 231231231,
+      "id": 3
     }
   ]
 }

@@ -156,7 +156,21 @@ const ProductAdd: React.FC = () => {
                   name="saleOffPrice"
                   label="Giá giảm"
                   labelCol={{ span: 24 }}
-                  rules={[{ required: true, message: "Gía sản phẩm" }]}
+                  rules={[
+                    ({ getFieldValue }) => ({
+                      validator(_, value) {
+                        if (
+                          !value ||
+                          Number(getFieldValue("originalPrice")) <= Number(value)
+                        ) {
+                          return Promise.reject(
+                            new Error("Giá khuyến mại phải nhỏ hơn giá gốc")
+                          );
+                        }
+                        return Promise.resolve();
+                      },
+                    }),
+                  ]}
                 >
                   <InputNumber style={{ width: "100%" }} size="large" />
                 </Form.Item>

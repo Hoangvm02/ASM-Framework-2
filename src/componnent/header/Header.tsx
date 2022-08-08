@@ -25,7 +25,7 @@ const Header = (props: Props) => {
     <Wrapper>
       <Container>
         <div>
-          <Image src={LogoImage} />
+         <Link to="/"> <Image src={LogoImage} /></Link>
         </div>
         <div className={s.content_btn}>
           {/* <Seach className={s.input}  > */}

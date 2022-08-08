@@ -16,9 +16,6 @@ const item3: MenuProps['items'] = [
     {key: "dassboard", icon: <HomeOutlined />, label: <Link to="/admin">Dashboard</Link>},
     {key: "cellphone", icon: <PhoneOutlined />, label: <Link to="/admin/product">Điện thoại</Link>},
     {key: "categories", icon: <CopyOutlined />, label: <Link to="/admin/category">Danh Mục</Link>},
-    {key: "laptop", icon: <LaptopOutlined />, label: "Laptop"},
-    {key: "tablet", icon: <TabletFilled />, label: "Máy tính bảng"},
-    {key: "audio", icon: <AudioOutlined />, label: "Âm thanh"},
     
 ]
 // const a = JSON.parse(localStorage.getItem("user") as string);
@@ -27,7 +24,7 @@ const DashboardLayout: React.FC = () => (
   <Container>
   <Layout>
     <HeaderCustom>
-      <Logo src={LogoImage}/>
+      <Link to="/"><Logo src={LogoImage}/></Link>
       <NameD>
         Dashboard
       </NameD>

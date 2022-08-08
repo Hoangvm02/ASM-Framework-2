@@ -28,7 +28,7 @@ const Signup: React.FC = () => {
   const navigate = useNavigate();
   const onFinish = async (values: any) => {
     try {
-      const { data: user } = await signup(values);
+      const { data } = await signup(values);
       message.success("Đăng ký thành công");
       navigate("/signin");
     } catch (err) {
