@@ -8,16 +8,16 @@ import styled from "styled-components";
 import Header from "../../../componnent/header/Header";
 const Cart = () => {
   const { cart } = useSelector((store) => store);
-  // const dispatch = useDispatch();
-  // const increase = (id: string) => {
-  //   dispatch(cartSlice.actions.increase(id));
-  // };
-  // const decrease = (_id: string) => {
-  //   dispatch(cartSlice.actions.decrease(id));
-  // };
-  // const remove = (_id: string) => {
-  //   dispatch(cartSlice.actions.remove(id));
-  // };
+  const dispatch = useDispatch();
+  const increase = (id: string) => {
+    dispatch(cartSlice.actions.increase(id));
+  };
+  const decrease = (id: string) => {
+    dispatch(cartSlice.actions.decrease(id));
+  };
+  const remove = (id: number) => {
+    dispatch(cartSlice.actions.remove(id));
+  };
   return (
    <div>
     <Header/>
@@ -43,7 +43,7 @@ const Cart = () => {
                     <h3>{item.name}</h3>
                   </div>
                   <div>
-                    <button>X</button>
+                    <button onClick={() => remove(item.id)}>X</button>
                   </div>
                 </NameX>
 
@@ -52,6 +52,11 @@ const Cart = () => {
                     <PriceColor>{item.originalPrice.toLocaleString()} đ</PriceColor>
                     <PriceC>{item.saleOffPrice.toLocaleString()} đ</PriceC>
                   </Pricee>
+                </div>
+                <div>
+                  <button onClick= {() => decrease(item.id)}>-</button>
+                    <input type="text"  value={item.amount} style={{width: "50px", padding:"0 20px" }} />
+                  <button onClick= {() => increase(item.id)}>+</button>
                 </div>
                 <div>
                   <span>- Chương trình khuyến mãi: </span>
@@ -78,6 +83,7 @@ const Cart = () => {
     </div>
   );
 };
+
 const Oder = styled.button`
   background-color: #D70018;
   width: 100%;

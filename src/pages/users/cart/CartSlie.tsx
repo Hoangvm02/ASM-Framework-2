@@ -14,12 +14,12 @@ const cartSlice = createSlice({
       } else {
         exitsProduct.amount += 1;
       }
-      state.total = state.cart.reduce((accu: any, item: any) => accu + (item.saleOffPrice - item.originalPrice  ) * item.amount,0)   
+      state.total = state.cart.reduce((accu: any, item: any) => accu + ( item.originalPrice  * item.amount ),0 )   
     },
     increase: (state: any, action: any) => {
       let currentItem = state.cart.find((c: any) => c.id == action.payload);
       currentItem.amount++;
-      state.total = state.cart.reduce((accu: any, item: any) => accu + (item.saleOffPrice - item.originalPrice  ) * item.amount,0)
+      state.total = state.cart.reduce((accu: any, item: any) => accu + ( item.originalPrice  * item.amount ),0 )   
     },
     decrease: (state: any, action: any) => {
       let currentItem = state.cart.find((c: any) => c.id == action.payload);
@@ -35,7 +35,7 @@ const cartSlice = createSlice({
           currentItem.amount = 1;
         }
       }
-      state.total = state.cart.reduce((accu: any, item: any) => accu + (item.saleOffPrice - item.originalPrice  ) * item.amount,0)
+      state.total = state.cart.reduce((accu: any, item: any) => accu + ( item.originalPrice  * item.amount ),0 )   
     },
     remove: (state: any, action: any) => {
       const confirm = window.confirm("Bạn có muốn xóa sản phẩm không?");
@@ -45,7 +45,7 @@ const cartSlice = createSlice({
         );
         state.cart = [...removeItem];
       }
-      state.total = state.cart.reduce((accu: any, item: any) => accu + (item.saleOffPrice - item.originalPrice  ) * item.amount,0)
+      state.total = state.cart.reduce((accu: any, item: any) => accu + ( item.originalPrice  * item.amount ),0 )   
     },
   },
 });

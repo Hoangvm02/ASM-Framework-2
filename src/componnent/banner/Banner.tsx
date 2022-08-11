@@ -26,7 +26,7 @@ const Banner = (props: Props) => {
             <div>
               <Image2 src={img1} />
             </div>
-            <a href="">Điện Thoại</a>
+            <div>Điện Thoại</div>
           </Icon>
           <div>
             <RightOutlined />

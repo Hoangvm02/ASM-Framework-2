@@ -207,14 +207,19 @@
       "email": "khach@gmail.com",
       "password": "$2a$10$f9WsobBESRpTMRwgjIe/2.Q.4Fu0MLioZ08sZz.p.WmYXnPFmPc9S",
       "Số điện thoại": 91238123,
-      "id": 2,
-      "role": 0
+      "id": 2
     },
     {
       "email": "abc@gmail.com",
       "password": "$2a$10$T8vxolmECG0vdjpCmmmUaub8wiTBV2iqAtxMBR4U/C6zE6mDDk3xe",
       "Số điện thoại": 231231231,
       "id": 3
+    },
+    {
+      "email": "abcd@gmail.com",
+      "password": "$2a$10$zS0M9vZgX01L3A2WuAgZdOciwmkfgCxlBSZRXPz6p5cIDyWzirQgi",
+      "Số điện thoại": 312381233,
+      "id": 4
     }
   ]
 }

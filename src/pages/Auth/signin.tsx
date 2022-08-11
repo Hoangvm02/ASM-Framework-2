@@ -29,9 +29,9 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const onFinish = async (values: any) => {
     try {
-      const {data: user} = await signin(values);
+      const { data } = await signin(values);
       message.success("Đăng nhập thành công");
-      auth(user, () => navigate('/'))
+      auth(data, () => navigate("/"));
     } catch (err) {
       message.error("Có lỗi xảy ra");
     }
@@ -71,10 +71,14 @@ const Login: React.FC = () => {
                   { required: true, message: "Mật khẩu không được trống" },
                 ]}
               >
-                <Input.Password  size="large"/>
+                <Input.Password size="large" />
               </Form.Item>
               <Form.Item>
-                <Button type="primary" htmlType="submit" style={{ width: "400px" }} >
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  style={{ width: "400px" }}
+                >
                   Đăng Nhập
                 </Button>
               </Form.Item>
