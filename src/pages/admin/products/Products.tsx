@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Typography, Button, Table, Switch, Space, Image } from "antd";
-import { Link, NavLink } from "react-router-dom";
+import { Typography, Button, Table, Switch, Space, Image, Select } from "antd";
+import { Link, NavLink, useParams } from "react-router-dom";
 import {
   SearchOutlined,
   PlusOutlined,
@@ -11,7 +11,7 @@ import {
 } from "@ant-design/icons";
 const { Paragraph } = Typography;
 import type { ColumnsType } from "antd/es/table";
-import { getAll, remove } from "../../../api/products";
+import { getAll, readProInCate, remove } from "../../../api/products";
 import { ProductType } from "../../../types/product";
 import { CategoryType } from "../../../types/categories";
 import { list } from "../../../api/categories";
@@ -73,15 +73,16 @@ const ProductAdminPage = () => {
       title: "Danh mục",
       dataIndex: "categories",
       key: "categories",
+      // filters: filters,
       render: (text: any) => {
         let name;
         cate.map((item) => {
-          if(item.id == text){
+          if (item.id == text) {
             name = item.name;
           }
-        })
-        return <span>{name}</span>
-      }
+        });
+        return <span>{name}</span>;
+      },
     },
     {
       title: "Ẩn/Hiện",
@@ -101,7 +102,7 @@ const ProductAdminPage = () => {
           <Space size="middle">
             <IconsItems>
               <Link to={`/admin/product/detail/${dataIndex}`}>
-                <PlusCircleOutlined  />
+                <PlusCircleOutlined />
               </Link>
             </IconsItems>
           </Space>
@@ -151,8 +152,9 @@ const ProductAdminPage = () => {
     },
   ];
   const [dataTable, setDataTable] = useState([]);
-  console.log("dataTable", dataTable);
-
+  const {id} = useParams();
+  console.log(id);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -160,8 +162,19 @@ const ProductAdminPage = () => {
         setDataTable(data.data);
       } catch (err) {}
     };
-    fetchData();
-  }, []);
+    const fetchDataInCate = async () => {
+      try {
+        const data = await readProInCate(id);
+        setDataTable(data.data);
+      } catch (err) {}
+    };
+    if(id) {
+      fetchDataInCate();
+    }else{
+      fetchData();
+    }
+  }, [id]);
+
 
   return (
     <>
@@ -174,6 +187,18 @@ const ProductAdminPage = () => {
           <Button type="dashed" shape="circle" icon={<PlusOutlined />} />
         </Link>
       </Breadcrumb>
+      <Items>
+        <div>Danh mục</div>
+        <div>
+          <Select style={{ width: "150px" }}>
+            <option><Link to={`/admin/product`}>Chọn danh muc</Link></option>
+            {cate &&
+              cate.map((item) => {
+                return <option value={item.id}><Link to={`/admin/product/sort/${item.id}`}>{item.name}</Link></option>;
+              })}
+          </Select>
+        </div>
+      </Items>
 
       <Table columns={columns} dataSource={dataTable} />
     </>
@@ -192,4 +217,8 @@ const IconsItems2 = styled.div`
   color: #00b0d7;
 `;
 
+const Items = styled.div`
+  display: flex;
+  margin: 20px 0;
+`;
 export default ProductAdminPage;

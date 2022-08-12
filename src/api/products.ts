@@ -20,3 +20,7 @@ export const read = (id : number) => {
     const url = `/products/${id}`;
     return instance.get(url);
 }
+export const readProInCate = (id : number) => {
+    const url = `/products?categories=${id}`;
+    return instance.get(url);
+}
