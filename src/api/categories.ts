@@ -1,8 +1,9 @@
 import { CategoryType } from "../types/categories"
 import { ProductType } from "../types/product"
 import instance from "./instance"
+
 export const list = () => {
-    const url = "/categories"
+    const url = `/categories`
     return instance.get(url)
 }
 export const listCate = (id:number) => {

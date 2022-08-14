@@ -1,5 +1,5 @@
 import { RightOutlined } from "@ant-design/icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import img1 from "../../assets/images/dt.png";
@@ -10,7 +10,10 @@ import img5 from "../../assets/images/dongho.png";
 import img6 from "../../assets/images/home.png";
 import Banner2 from "../../assets/images/banner.png";
 import { Select } from "antd";
+import { CategoryType } from "../../types/categories";
+import { Link } from "react-router-dom";
 
+import {list} from "../../api/categories"
 type Props = {};
 const { Option, OptGroup } = Select;
 
@@ -18,80 +21,36 @@ const handleChange = (value: string) => {
   console.log(`selected ${value}`);
 };
 const Banner = (props: Props) => {
+  const [cate, setCate] = useState<CategoryType[]>([]);
+  useEffect(() => {
+    const fetchCate = async () => {
+      const { data } = await list()
+      setCate(data);
+    };
+    fetchCate();
+  }, []);
   return (
     <Container>
       <div>
-        <Img>
-          <Icon>
-            <div>
-              <Image2 src={img1} />
-            </div>
-            <div>Điện Thoại</div>
-          </Icon>
-          <div>
-            <RightOutlined />
-          </div>
-        </Img>
+        {cate &&
+          cate.map((item) => {
+            return (
+              <Img>
+                <Icon>
+                  <Link to={`/${item.id}`} className="text-black text-normal">
+                    {item.name}
+                  </Link>
+                </Icon>
+                <div>
+                  <RightOutlined />
+                </div>
+              </Img>
+            );
+          })}
         {/* item 1 */}
-        <Img>
-          <Icon>
-            <div>
-              <Image3 src={img2} />
-            </div>
-            <div>LapTop</div>
-          </Icon>
-          <div>
-            <RightOutlined />
-          </div>
-        </Img>
+       
         {/* item 2 */}
-        <Img>
-          <Icon>
-            <div>
-              <Image3 src={img3} />
-            </div>
-            <div>Máy Tính Bảng</div>
-          </Icon>
-          <div>
-            <RightOutlined />
-          </div>
-        </Img>
-        {/* item 3 */}
-        <Img>
-          <Icon>
-            <div>
-              <Image3 src={img4} />
-            </div>
-            <div>Tai Nghe</div>
-          </Icon>
-          <div>
-            <RightOutlined />
-          </div>
-        </Img>
-        {/* item 4 */}
-        <Img>
-          <Icon>
-            <div>
-              <Image3 src={img5} />
-            </div>
-            <div>Đồng Hồ</div>
-          </Icon>
-          <div>
-            <RightOutlined />
-          </div>
-        </Img>
-        {/* item 5 */}
-        <Img>
-          <Icon>
-            <div>
-              <Image3 src={img6} />
-            </div>
-            <div>Nhà Thông Minh</div>
-          </Icon>
-          <div>
-            <RightOutlined />
-          </div>
-        </Img>
+       
       </div>
       {/* aaaaa */}
       <div>
